@@ -826,7 +826,8 @@ function varbase_styleguide_styleguide_alter(&$items) {
     if (is_array($entity_ids) && count($entity_ids) > 0) {
 
       // Node ID for the first node. if we do have a node for the content type. 
-      $nid = (array_values($entity_ids))[0];
+      $entity_ids_values = array_values($entity_ids);
+      $nid = $entity_ids_values[0];
 
       $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
       $storage = \Drupal::entityTypeManager()->getStorage('node');
