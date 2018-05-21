@@ -74,7 +74,10 @@ CONFIGURATION
 MAINTAINERS
 -----------
 
- * Rajab Natshah (RajabNatshah) - https://www.drupal.org/u/rajabnatshah
+ * Mohammed Razem (Mohammed J. Razem) -
+   https://www.drupal.org/u/mohammed-j-razem
+ * Rajab Natshah (RajabNatshah) -
+   https://www.drupal.org/u/rajabnatshah
 
 Supporting organization:
 
