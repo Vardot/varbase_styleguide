@@ -2,8 +2,8 @@ name: 'Varbase Style guide'
 description: 'Varbase custom styling guide components.'
 type: module
 core: 8.x
+version: 8.x-5.x-dev
+package: Varbase
 dependencies:
   - styleguide
   - vmi
-package: Varbase
-version: 8.x-5.x-dev
