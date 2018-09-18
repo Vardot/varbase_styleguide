@@ -32,10 +32,7 @@ This module requires the following outside of Drupal core.
 
 One of the following themes:
  * Varbase Theme - https://www.drupal.org/project/vartheme
- * Varbase Theme - Material Design -
-   https://www.drupal.org/project/vartheme_material
 
-It will work with Varbase 8.x-4.x and 8.x-5.x.
 
 
 RECOMMENDED MODULES
