@@ -7,4 +7,5 @@ package: Varbase
 project: varbase_styleguide
 dependencies:
   - styleguide:styleguide
-  - vmi:vmi
+install:
+  - vmi
