@@ -5,6 +5,7 @@
  * Contains varbase_styleguide.module.
  */
 
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_page_attachments().
@@ -919,4 +920,39 @@ function _varbase_styleguide_col($col_class, $node_output_with_a_view_mode) {
   $col_html_output .= '</div>';
   
   return $col_html_output;
+}
+
+/**
+ * Implements hook_help().
+ */
+function varbase_styleguide_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.varbase_styleguide':
+      $readme = __DIR__ . '/README.md';
+      $text = file_get_contents($readme);
+      $output = '';
+
+      // If the Markdown module is installed, use it to render the README.
+      if ($text && \Drupal::moduleHandler()->moduleExists('markdown') === TRUE) {
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        $output = $filter->process($text, 'en');
+      }
+      // Else the Markdown module is not installed output the README as text.
+      else if ($text) {
+        $output = '<pre>' . $text . '</pre>';
+      }
+
+      // Add a link to the Drupal.org project.
+      $output .= '<p>';
+      $output .= t('Visit the <a href=":project_link">Varbase Styleguide project page</a> on Drupal.org for more information.',[
+        ':project_link' => 'https://www.drupal.org/project/varbase_styleguide'
+        ]);
+      $output .= '</p>';
+
+      return $output;
+  }
+
 }
