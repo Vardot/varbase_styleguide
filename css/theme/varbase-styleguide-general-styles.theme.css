@@ -4,8 +4,10 @@ body div.styleguide {
   margin: 0 -30px;
   padding: 20px;
 }
+
 body h2.styleguide {
-  font: 42px bold helvetica, arial, sans-serif;
+  font: 42px bold helvetica,arial,sans-serif;
+  font-size: 2.625rem;
   margin: 2em auto .5em;
   padding: 0;
   text-align: center;
@@ -13,8 +15,16 @@ body h2.styleguide {
   font-weight: bold;
   color: #666;
 }
+
+@media (max-width: 1200px) {
+  body h2.styleguide {
+    font-size: calc(1.3875rem + 1.65vw) ;
+  }
+}
+
 body .styleguide-description {
-  font: 12px helvetica, arial, sans-serif;
+  font: 12px helvetica,arial,sans-serif;
+  font-size: 0.75rem;
   margin: 0 0 .5em;
   text-align: center;
 }
