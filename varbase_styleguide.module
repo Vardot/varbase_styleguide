@@ -6,13 +6,14 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Implements hook_page_attachments().
  */
 function varbase_styleguide_page_attachments(array &$page) {
   $route_name = \Drupal::routeMatch()->getRouteName();
-  
+
   if (preg_match('/^styleguide./', $route_name)) {
     $page['#attached']['library'][] = 'varbase_styleguide/general-styles';
   }
@@ -22,15 +23,17 @@ function varbase_styleguide_page_attachments(array &$page) {
  * Implements hook_styleguide_alter().
  */
 function varbase_styleguide_styleguide_alter(&$items) {
-  
-  // Change the styleguide-preview.jpg with flag-earth.jpg . 
-  $image_data = file_get_contents(drupal_get_path('module', 'varbase_styleguide') .  '/images/flag-earth.jpg');
-  $file = file_save_data($image_data, 'public://flag-earth.jpg', FILE_EXISTS_REPLACE);
 
-  foreach ($items as $item_index => $item) {
-    if ( isset($item['content']['#uri']) &&
-      $item['content']['#uri'] == "public://styleguide-preview.jpg") {
-      $items[$item_index]['content']['#uri'] = "public://flag-earth.jpg";
+  // Change the styleguide-preview.jpg with flag-earth.jpg .
+  $image_data = file_get_contents(drupal_get_path('module', 'varbase_styleguide') . '/images/flag-earth.jpg');
+  $file = file_save_data($image_data, 'public://flag-earth.jpg', FileSystemInterface::EXISTS_REPLACE);
+
+  if (isset($image_data) && isset($file)) {
+    foreach ($items as $item_index => $item) {
+      if (isset($item['content']['#uri']) &&
+        $item['content']['#uri'] == "public://styleguide-preview.jpg") {
+        $items[$item_index]['content']['#uri'] = "public://flag-earth.jpg";
+      }
     }
   }
 
@@ -795,10 +798,9 @@ function varbase_styleguide_styleguide_alter(&$items) {
         </div>
       </div>',
   ];
-  
-  
+
   // ===========================================================================
-  // Have Varbase custom components and elements : 
+  // Have Varbase custom components and elements :
   // ===========================================================================
   $items['varbase_elements'] = [
     'group' => 'Varbase',
@@ -810,7 +812,7 @@ function varbase_styleguide_styleguide_alter(&$items) {
   ];
 
   // ===========================================================================
-  // Have the list of active view modes for content types: 
+  // Have the list of active view modes for content types:
   // ===========================================================================
   $content_types = \Drupal::service('entity.manager')
     ->getStorage('node_type')
@@ -826,7 +828,7 @@ function varbase_styleguide_styleguide_alter(&$items) {
 
     if (is_array($entity_ids) && count($entity_ids) > 0) {
 
-      // Node ID for the first node. if we do have a node for the content type. 
+      // Node ID for the first node. if we do have a node for the content type.
       $entity_ids_values = array_values($entity_ids);
       $nid = $entity_ids_values[0];
 
@@ -841,38 +843,38 @@ function varbase_styleguide_styleguide_alter(&$items) {
       if (isset($node) && is_array($view_modes) && count($view_modes)) {
         foreach ($view_modes as $view_mode => $view_mode_object) {
           // Convert view mode to string.
-          $view_mode = (string)$view_mode;
-          
-          // Not to add the default or full content page. only teaser view modes.
+          $view_mode = (string) $view_mode;
+
+          // Not to add the default or full content page.only teaser view modes.
           if ($view_mode != 'default' && $view_mode != 'full') {
             $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
             $node_build = $view_builder->view($node, $view_mode);
             $node_output_with_the_view_mode = render($node_build);
-            
+
             $final_view_mode_output = '';
 
-            // if view mode end with xsmall.
-            // print it 6 times;
+            // If view mode end with xsmall.
+            // print it 6 times;.
             if (preg_match('/xsmall$/', $view_mode)) {
               $node_html = _varbase_styleguide_col('col-sm-2', $node_output_with_the_view_mode);
               $final_view_mode_output .= _varbase_styleguide_fill_row(6, $node_html);
             }
-            // if view mode end with small.
-            // print it 4 times  
-            else if (preg_match('/small$/', $view_mode) &&
+            // If view mode end with small.
+            // print it 4 times.
+            elseif (preg_match('/small$/', $view_mode) &&
                      !preg_match('/xsmall$/', $view_mode)) {
               $node_html = _varbase_styleguide_col('col-sm-3', $node_output_with_the_view_mode);
               $final_view_mode_output .= _varbase_styleguide_fill_row(4, $node_html);
             }
-            // if view mode end with medium.
-            // print it 3 times  
-            else if (preg_match('/medium$/', $view_mode)) {
+            // If view mode end with medium.
+            // print it 3 times.
+            elseif (preg_match('/medium$/', $view_mode)) {
               $node_html = _varbase_styleguide_col('col-sm-4', $node_output_with_the_view_mode);
               $final_view_mode_output .= _varbase_styleguide_fill_row(3, $node_html);
             }
-            // if view mode end with large.
-            // print it 2 times  
-            else if (preg_match('/large/', $view_mode) &&
+            // If view mode end with large.
+            // print it 2 times.
+            elseif (preg_match('/large/', $view_mode) &&
                      !preg_match('/xlarge$/', $view_mode)) {
               $node_html = _varbase_styleguide_col('col-sm-6', $node_output_with_the_view_mode);
               $final_view_mode_output .= _varbase_styleguide_fill_row(2, $node_html);
@@ -881,9 +883,9 @@ function varbase_styleguide_styleguide_alter(&$items) {
               $node_html = _varbase_styleguide_col('col-sm-12', $node_output_with_the_view_mode);
               $final_view_mode_output .= _varbase_styleguide_fill_row(1, $node_html);
 
-             // if view mode end with xlarge.
-             // print it 1 times
-             // and that goes with all other view modes.
+              // If view mode end with xlarge.
+              // print it 1 times
+              // and that goes with all other view modes.
             }
 
             $items['varbase_' . $content_type->id() . '_' . $view_mode] = [
@@ -907,7 +909,7 @@ function _varbase_styleguide_fill_row($number_of_coloumns, $node_html) {
     $row_html_output .= $node_html;
   }
   $row_html_output .= '</div>';
-  
+
   return $row_html_output;
 }
 
@@ -918,7 +920,7 @@ function _varbase_styleguide_col($col_class, $node_output_with_a_view_mode) {
   $col_html_output  = '<div class="' . $col_class . '">';
   $col_html_output .= $node_output_with_a_view_mode;
   $col_html_output .= '</div>';
-  
+
   return $col_html_output;
 }
 
@@ -941,15 +943,15 @@ function varbase_styleguide_help($route_name, RouteMatchInterface $route_match) 
         $output = $filter->process($text, 'en');
       }
       // Else the Markdown module is not installed output the README as text.
-      else if ($text) {
+      elseif ($text) {
         $output = '<pre>' . $text . '</pre>';
       }
 
       // Add a link to the Drupal.org project.
       $output .= '<p>';
-      $output .= t('Visit the <a href=":project_link">Varbase Styleguide project page</a> on Drupal.org for more information.',[
-        ':project_link' => 'https://www.drupal.org/project/varbase_styleguide'
-        ]);
+      $output .= t('Visit the <a href=":project_link">Varbase Styleguide project page</a> on Drupal.org for more information.', [
+        ':project_link' => 'https://www.drupal.org/project/varbase_styleguide',
+      ]);
       $output .= '</p>';
 
       return $output;
