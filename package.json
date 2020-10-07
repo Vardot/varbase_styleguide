@@ -1,7 +1,7 @@
 {
   "name": "varbase_styleguide",
   "private": true,
-  "version": "8.6.0",
+  "version": "9.0.0",
   "description": "Varbase Styleguide",
   "main": "index.js",
   "scripts": {
