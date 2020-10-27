@@ -32,7 +32,7 @@
     "cweagans/composer-patches": "~1.0",
     "drupal/drupal-library-installer-plugin": "^0.3",
     "drupal/core": "^9 || ~10.0.0",
-    "drupal/styleguide": "~1.0",
+    "drupal/styleguide": "1.x-dev",
     "drupal/vmi": "~2.0"
   },
   "extra": {
@@ -41,6 +41,12 @@
       "npm-asset"
     ],
     "enable-patching": true,
-    "composer-exit-on-patch-failure": true
+    "composer-exit-on-patch-failure": true,
+    "patches": {
+      "drupal/styleguide": {
+        "Issue #3068640 Drupal 9 Deprecated Code Report":
+        "https://www.drupal.org/files/issues/2020-09-16/styleguide-3068640-39.patch"
+      }
+    }
   }
 }
