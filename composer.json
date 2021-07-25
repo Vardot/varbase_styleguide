@@ -31,11 +31,17 @@
     "oomphinc/composer-installers-extender": "~1.0 || ~2.0",
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~9.0",
-    "drupal/styleguide": "~2.0",
+    "drupal/styleguide": "2.0.0-beta1",
     "drupal/vmi": "~2.0"
   },
   "extra": {
     "enable-patching": true,
-    "composer-exit-on-patch-failure": true
+    "composer-exit-on-patch-failure": true,
+    "patches": {
+      "drupal/styleguide": {
+        "Issue #3184083: Fix invalid id passed to layout plugin":
+        "https://www.drupal.org/files/issues/2020-11-22/3184083-1-styleguide-layout.patch"
+      }
+    }
   }
 }
