@@ -27,10 +27,6 @@ class VarbaseStyleGuideTest extends WebDriverTestBase {
    */
   protected $defaultTheme = 'vartheme_bs4';
 
-  /**
-   * {@inheritdoc}
-   */
-  protected $strictConfigSchema = FALSE;
 
   /**
    * {@inheritdoc}
@@ -74,7 +70,7 @@ class VarbaseStyleGuideTest extends WebDriverTestBase {
     // Given that the root super user was logged in to the site.
     $this->drupalLogin($this->rootUser);
 
-    // Create a content type and activate all
+    // Create a content type and activate all.
     $this->testContentType = $this->drupalCreateContentType([
       'type' => 'post',
       'name' => 'Post',
@@ -127,7 +123,9 @@ class VarbaseStyleGuideTest extends WebDriverTestBase {
   }
 
   /**
-   * Check Varbase Style Guide on Varbase elements and Bootstrap elements for Vartheme.
+   * Check Varbase Style Guide on custom elments.
+   *
+   * Varbase elements and Bootstrap elements for Vartheme.
    */
   public function testCheckVarbaseStyleGuideOnCustomElementsForVartheme() {
 
@@ -149,18 +147,18 @@ class VarbaseStyleGuideTest extends WebDriverTestBase {
   }
 
   /**
-   * Check Varbase Style Guide on (VMI) View Modes Inventory - Bootstrap Ready elements for Vartheme.
+   * Check Varbase Style Guide on (VMI).
+   *
+   * View Modes Inventory - Bootstrap Ready elements for Vartheme.
    */
   public function testCheckVarbaseStyleGuideOnVmiElementsForVartheme() {
 
     $assert_session = $this->assertSession();
-    $page = $this->getSession()->getPage();
 
     $this->drupalGet('admin/structure/types/manage/post/display');
     $assert_session->pageTextContains('Manage display');
 
     // Check all check boxes for VMI custom display view modes.
-
     $vmi_factory = \Drupal::service('class_resolver')
       ->getInstanceFromDefinition(ViewModesInventoryFactory::class);
 
