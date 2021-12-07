@@ -32,7 +32,7 @@
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~9.0",
     "drupal/styleguide": "2.0.0-beta1",
-    "drupal/vmi": "~2.0"
+    "drupal/vmi": "~3.0 || 3.0.x-dev"
   },
   "extra": {
     "enable-patching": true,
