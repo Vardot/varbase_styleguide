@@ -13,3 +13,11 @@ config/**/*.yml
 *.svg
 *.ico
 *.json
+*.md
+*.po
+*.xml
+*.js
+*.install
+*.module
+*.lock
+package
