@@ -204,9 +204,9 @@ function varbase_styleguide_styleguide_alter(&$items) {
             <button type="button" class="btn btn-info">Info</button>
             <button type="button" class="btn btn-warning">Warning</button>
             <button type="button" class="btn btn-danger">Danger</button>
-            <button type="button" class="btn btn-link">Link</button>
             <button type="button" class="btn btn-light">Light</button>
             <button type="button" class="btn btn-dark">Dark</button>
+            <button type="button" class="btn btn-link">Link</button>
           <br /></p>
 
           <p class="bs-component">
@@ -216,6 +216,8 @@ function varbase_styleguide_styleguide_alter(&$items) {
             <button type="button" class="btn btn-info disabled">Info</button>
             <button type="button" class="btn btn-warning disabled">Warning</button>
             <button type="button" class="btn btn-danger disabled">Danger</button>
+            <button type="button" class="btn btn-light disabled">Light</button>
+            <button type="button" class="btn btn-dark disabled">Dark</button>
             <button type="button" class="btn btn-link disabled">Link</button>
           <br /></p>
 
@@ -226,6 +228,9 @@ function varbase_styleguide_styleguide_alter(&$items) {
             <button type="button" class="btn btn-outline-info">Info</button>
             <button type="button" class="btn btn-outline-warning">Warning</button>
             <button type="button" class="btn btn-outline-danger">Danger</button>
+            <button type="button" class="btn btn-outline-light disabled">Light</button>
+            <button type="button" class="btn btn-outline-dark disabled">Dark</button>
+            <button type="button" class="btn btn-outline-link disabled">Link</button>
           <br /></p>
 
           <div class="bs-component">
