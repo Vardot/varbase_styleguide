@@ -32,19 +32,12 @@
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~9.0 || ~10.0",
     "vardot/module-installer-factory": "~1.0",
-    "drupal/styleguide": "2.0.0-beta1",
+    "drupal/styleguide": "~2.0",
     "drupal/vmi": "~2.0"
   },
   "extra": {
     "enable-patching": true,
     "composer-exit-on-patch-failure": true,
-    "patches": {
-      "drupal/styleguide": {
-        "Issue #3184083: Fix invalid id passed to layout plugin":
-        "https://www.drupal.org/files/issues/2020-11-22/3184083-1-styleguide-layout.patch",
-        "Issue #3258816: Fix [PHP 8.1] Deprecated function: strpos(): Passing null to parameter #1":
-        "https://git.drupalcode.org/project/styleguide/-/merge_requests/5.diff"
-      }
-    }
+    "patches": { }
   }
 }
