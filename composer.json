@@ -30,10 +30,10 @@
     "composer/installers": "~2.0",
     "oomphinc/composer-installers-extender": "~2.0",
     "cweagans/composer-patches": "~1.0",
-    "drupal/core": "~9.0 || ~10.0",
+    "drupal/core": "~10.1.0",
     "vardot/module-installer-factory": "~1.0",
     "drupal/styleguide": "~2.0",
-    "drupal/vmi": "~3.0 || 3.0.x-dev"
+    "drupal/vmi": "~2.0 || ~3.0"
   },
   "extra": {
     "enable-patching": true,
