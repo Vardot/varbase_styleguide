@@ -40,7 +40,7 @@ RECOMMENDED MODULES
 
 This module is best used with Varbase distribution.
 
- * Varbase: The Ultimate Drupal 8 CMS Starter Kit (Bootstrap Ready) -
+ * Varbase: The Ultimate Drupal CMS Starter Kit (Bootstrap Ready) -
    https://www.drupal.org/project/varbase
 
 
