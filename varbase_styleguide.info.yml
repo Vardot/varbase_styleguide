@@ -1,8 +1,8 @@
-name: "Varbase Styleguide"
-description: "Varbase custom styling guide components."
+name: Varbase Styleguide
+description: Varbase custom styling guide components.
 type: module
 package: Varbase
-core_version_requirement: ~10.1.0
+core_version_requirement: ~10
 dependencies:
   - styleguide:styleguide
 install:
