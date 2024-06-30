@@ -1,0 +1,5 @@
+name: Varbase Styleguide - Default
+description: A recipe to manage default installed modules, configs and permissions.
+type: install
+install:
+  - vmi

@@ -5,16 +5,16 @@
  * Contains install and update for Varbase Style guide module.
  */
 
-use Vardot\Installer\ModuleInstallerFactory;
+use Drupal\Core\Recipe\Recipe;
+use Drupal\Core\Recipe\RecipeRunner;
 
 /**
  * Implements hook_install().
  */
 function varbase_styleguide_install() {
 
-  // Processor for install: in varbase_admin.info.yml file using ModuleInstallerFactory.
-  // ---------------------------------------------------------------------------.
-  ModuleInstallerFactory::installList('varbase_styleguide');
+  $default_recipe = Recipe::createFromDirectory(__DIR__ . '/recipes/default');
+  RecipeRunner::processRecipe($default_recipe);
 
 }
 
@@ -26,5 +26,5 @@ function varbase_styleguide_install() {
 function varbase_styleguide_update_90001() {
   // Set the weight of the module after installation of list of modules.
   // To make sure that any hook or event subscriber worker after all used modules.
-  ModuleInstallerFactory::setModuleWeightAfterInstallation('varbase_styleguide');
+  // No longer needed, as switched to dependencies and recipes.
 }
