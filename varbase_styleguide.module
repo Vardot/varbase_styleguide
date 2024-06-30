@@ -6,7 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\File\FileExists;
 
 /**
  * Implements hook_page_attachments().
@@ -26,7 +26,7 @@ function varbase_styleguide_styleguide_alter(&$items) {
 
   // Change the styleguide-preview.jpg with flag-earth.jpg .
   $image_data = file_get_contents(\Drupal::service('extension.path.resolver')->getPath('module', 'varbase_styleguide') . '/images/flag-earth.jpg');
-  $file = \Drupal::service('file.repository')->writeData($image_data, 'public://flag-earth.jpg', FileSystemInterface::EXISTS_REPLACE);
+  $file = \Drupal::service('file.repository')->writeData($image_data, 'public://flag-earth.jpg', FileExists::Replace);
 
   if (isset($image_data) && isset($file)) {
     foreach ($items as $item_index => $item) {
@@ -1510,7 +1510,7 @@ function varbase_styleguide_styleguide_alter(&$items) {
     $query->condition('status', 1);
     $query->condition('type', $content_type->id());
     $query->range(0, 1);
-    $entity_ids = $query->execute();
+    $entity_ids = $query->accessCheck(FALSE)->execute();
 
     if (is_array($entity_ids) && count($entity_ids) > 0) {
 
