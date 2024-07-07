@@ -1535,7 +1535,7 @@ function varbase_styleguide_styleguide_alter(&$items) {
           if ($view_mode != 'default' && $view_mode != 'full') {
             $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
             $node_build = $view_builder->view($node, $view_mode);
-            $node_output_with_the_view_mode = render($node_build);
+            $node_output_with_the_view_mode = \Drupal::service('renderer')->render($node_build);
 
             $final_view_mode_output = '';
 
