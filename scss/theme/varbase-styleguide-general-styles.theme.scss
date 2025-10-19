@@ -1,4 +1,4 @@
-@import "../../node_modules/rfs/scss";
+@use "../../node_modules/rfs/scss" as rfs;
 
 body {
   div.styleguide {
@@ -11,8 +11,8 @@ body {
   h2 {
     &.styleguide {
       font: 42px bold helvetica, arial, sans-serif;
-      @include font-size(2.625rem);
-      @include margin(2em auto .5em);
+      @include rfs.font-size(2.625rem);
+      @include rfs.margin(2em auto .5em);
       padding: 0;
       text-align: center;
       text-transform: uppercase;
@@ -23,7 +23,7 @@ body {
 
   .styleguide-description {
     font: 12px helvetica, arial, sans-serif;
-    @include font-size(0.75rem);
+    @include rfs.font-size(0.75rem);
     margin: 0 0 .5em;
     text-align: center;
   }
