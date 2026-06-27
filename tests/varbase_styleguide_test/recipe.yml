@@ -1,0 +1,7 @@
+name: 'Varbase Styleguide Test'
+description: 'Provisions a Standard site with Varbase Styleguide and the Styleguide module for the automated tests.'
+type: 'Testing'
+install:
+  - varbase_styleguide
+  - styleguide
+  - vmi
