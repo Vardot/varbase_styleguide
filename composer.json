@@ -16,7 +16,7 @@
         "source": "http://cgit.drupalcode.org/varbase_styleguide"
     },
     "require": {
-        "drupal/core": "~11.3.0",
+        "drupal/core": "~11.4.0",
         "drupal/styleguide": "~2.0",
         "drupal/vmi": "~2.0"
     }
