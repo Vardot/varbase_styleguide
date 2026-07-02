@@ -118,7 +118,6 @@ composer:
     # Drupal 11.4.0 released 2026-07-01; pinned templates ref $CORE_STABLE is still 11.3.
     DRUPAL_CORE: "11.4.0"
     IGNORE_PROJECT_DRUPAL_CORE_VERSION: "1"
-    _LENIENT_ALLOW_LIST: "vmi"
   before_script:
     - composer config --no-plugins allow-plugins.composer/installers true || true
     - composer config --no-plugins allow-plugins.cweagans/composer-patches true || true
