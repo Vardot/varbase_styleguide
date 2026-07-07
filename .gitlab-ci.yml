@@ -102,7 +102,7 @@ webship-js-test:
     # Varbase Styleguide previews the Varbase theme's components; use vartheme_bs4
     # (Bootstrap 4) as the default front-end theme. CI/test only.
     - composer config --no-plugins allow-plugins.vardot/varbase-patches true || true
-    - composer --working-dir=$CI_PROJECT_DIR require "drupal/vartheme_bs4:9.0.x-dev" --no-interaction || true
+    - composer --working-dir=$CI_PROJECT_DIR require "drupal/vartheme_bs4:~9.2.0" --no-interaction || true
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT theme:install vartheme_bs4 -y || true
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT config:set system.theme default vartheme_bs4 -y || true
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
